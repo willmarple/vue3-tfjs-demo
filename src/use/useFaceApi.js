@@ -36,24 +36,11 @@ export function useFaceApi(videoElement) {
             videoElement.value.srcObject = stream;
             await videoElement.value.play();
 
-            // Create a canvas element to draw the detected emotions (hidden from the user)
-            const canvas = faceApi.createCanvasFromMedia(videoElement.value);
-
-            // Define your display size (e.g., 640x480) based on your requirements
-            const displaySize = {width: 640, height: 480};
-            faceApi.matchDimensions(canvas, displaySize);
-
-            // Append the canvas element to the hidden container (emotion-tracking)
-            const emotionContainer = document.querySelector(".emotion-tracking");
-            emotionContainer.appendChild(canvas);
-
             const detectEmotions = async () => {
                 const detections = await faceApi.detectAllFaces(
                     videoElement.value,
                     new faceApi.TinyFaceDetectorOptions()
                 ).withFaceExpressions();
-
-                canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
 
                 const detectedEmotions = detections.map(detection => {
                     const emotions = Object.entries(detection.expressions);
@@ -66,7 +53,6 @@ export function useFaceApi(videoElement) {
                 });
 
                 postsStore.addEmotionsToVisiblePosts(detectedEmotions);
-                // console.log('DETECTED EMOTIONS', detectedEmotions);
 
                 requestAnimationFrame(detectEmotions);
             };

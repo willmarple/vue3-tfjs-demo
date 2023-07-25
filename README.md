@@ -1,7 +1,12 @@
-# Vue 3 + Vite
+# Vue 3 + TensorFlow.js
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## A demo app using Vue 3 and TensorFlow.js
 
-## Recommended IDE Setup
+## Getting Started
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+1. Go to [Pexels](https://www.pexels.com/api/), setup and account and generate an API key.
+2. `cp .env.example .env` and add your API key to the `.env` file.
+3. `npm install`
+4. `npm run dev` or `vite dev`
+5. Open [http://localhost:5173](http://localhost:5173) in your browser.
+6. You may need to allow access to your webcam.
