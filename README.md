@@ -10,3 +10,4 @@
 4. `npm run dev` or `vite dev`
 5. Open [http://localhost:5173](http://localhost:5173) in your browser.
 6. You may need to allow access to your webcam.
+7. Go build something cool!
