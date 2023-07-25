@@ -32,7 +32,6 @@ export function useFaceApi(videoElement) {
 
     const startEmotionTracking = async (stream) => {
         try {
-            // Load the webcam stream into the video element
             videoElement.value.srcObject = stream;
             await videoElement.value.play();
 
@@ -42,19 +41,21 @@ export function useFaceApi(videoElement) {
                     new faceApi.TinyFaceDetectorOptions()
                 ).withFaceExpressions();
 
-                const detectedEmotions = detections.map(detection => {
-                    const emotions = Object.entries(detection.expressions);
-                    emotions.sort((a, b) => b[1] - a[1]); // Sort in descending order based on confidence
+                if (Array.isArray(detections)) {
+                    const detectedEmotions = detections.map(detection => {
+                        const emotions = Object.entries(detection.expressions);
+                        emotions.sort((a, b) => b[1] - a[1]); // Sort in descending order based on confidence
 
-                    return {
-                        name: emotions[0][0],
-                        confidence: emotions[0][1]
-                    };
-                });
+                        return {
+                            name: emotions[0][0],
+                            confidence: emotions[0][1]
+                        };
+                    });
 
-                postsStore.addEmotionsToVisiblePosts(detectedEmotions);
+                    postsStore.addEmotionsToVisiblePosts(detectedEmotions);
 
-                requestAnimationFrame(detectEmotions);
+                    requestAnimationFrame(detectEmotions);
+                }
             };
 
             detectEmotions();

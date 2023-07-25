@@ -75,16 +75,5 @@ export const usePostsStore = defineStore('posts', {
             })
         },
     },
-    getters: {
-        postEmotions(state) {
-            return state.posts.map(item => {
-                if (!item.emotions?.length) return [];
-                return Object.entries(item.emotions).map(emotion => ({
-                    postId: item.post.id,
-                    name: emotion[0],
-                    confidence: emotion[1]
-                }));
-            })
-        },
-    }
+    getters: {},
 })

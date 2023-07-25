@@ -79,7 +79,7 @@ import {useFaceApi} from "../use/useFaceApi.js";
 const postsStore = usePostsStore();
 const posts = computed(() => postsStore.posts);
 const postRefs = reactive([]);
-const videoElement = ref(null)
+const videoElement = ref(null);
 
 const {postEmotions} = useFaceApi(videoElement);
 
