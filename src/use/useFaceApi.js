@@ -17,7 +17,7 @@ export function useFaceApi(videoElement) {
                     .getUserMedia({video: true})
                     .then((stream) => {
                         videoElement.value.srcObject = stream;
-                        startEmotionTracking(stream);
+                        startEmotionTracking();
                     })
                     .catch((err) => {
                         console.error("Error accessing the webcam:", err);
@@ -30,9 +30,8 @@ export function useFaceApi(videoElement) {
         stopEmotionTracking();
     })
 
-    const startEmotionTracking = async (stream) => {
+    const startEmotionTracking = async () => {
         try {
-            videoElement.value.srcObject = stream;
             await videoElement.value.play();
 
             const detectEmotions = async () => {

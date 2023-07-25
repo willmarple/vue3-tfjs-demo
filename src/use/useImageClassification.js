@@ -7,7 +7,6 @@ export function useImageClassification() {
     const postsStore = usePostsStore();
 
     cocoSsd.load().then((model) => {
-        postsStore.cocoSsdModel = model;
         addImageClassifications(model);
     });
 

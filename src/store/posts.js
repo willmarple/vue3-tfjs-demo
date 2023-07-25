@@ -4,7 +4,6 @@ import dayjs from "dayjs";
 
 export const usePostsStore = defineStore('posts', {
     state: () => ({
-        cocoSsdModel: null,
         posts: [],
         visiblePosts: [],
     }),
